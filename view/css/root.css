@@ -84,7 +84,10 @@ body * {
 
 #viewManager > .is-view {
     height: 100%;
+    position: absolute;
     display: none;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
 }
 
 #viewManager > .is-view.current-view {
