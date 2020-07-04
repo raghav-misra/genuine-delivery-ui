@@ -1,40 +1,13 @@
-addEventListener("DOMContentLoaded", () => {
-    const 
-    window.router = {
-        element: document.querySelector("#viewManager"),
+// This is where the work happens lol:
 
-        get currentView() {
-            return this.element.querySelector(".is-view.current-view");
-        },
+document.querySelector("#searchBtn")
+    .addEventListener("click", () => router.go("Loading"));
 
-        go(viewName) {
-            let animateOut = false;
-
-            // Perform checks only if existing view:
-            if (this.currentView) {
-                animateOut = true;
-
-                // Return early if new view = old view:
-                if (this.currentView.dataset.name === viewName) return;
-
-                // Hide original view:
-                this.currentView.style.opacity = 0;
-                setTimeout((function () {
-                    this.currentView.classList.remove("current-view");
-                }).bind(this), 245)
-            }
-
-
-
-            // Set & show new view:
-            setTimeout((function () {
-                this.element.querySelector(`[data-name="${viewName}"]`)
-                    .classList.add("current-view");
-                this.element.querySelector(`[data-name="${viewName}"]`)
-                    .style.opacity = 1;
-            }).bind(this), 245);
-        }
-    };
-
-    router.go("Search");
-});
+router.onShow.Loading = () => {
+    /*
+        Fetch data, load cookies, etc. here
+    */
+    
+    // Timeout only for testing, remove later:
+    setTimeout(() => router.go("Results"), 1000);
+}

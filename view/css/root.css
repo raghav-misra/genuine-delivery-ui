@@ -66,6 +66,7 @@ body * {
     background: transparent;
     border: 1px solid var(--fore-accent);
     --btn-text-color: var(--fore-accent);
+    text-decoration: none;
 }
 
 .btn, .btn * { color: var(--btn-text-color); }
@@ -76,13 +77,21 @@ body * {
     --btn-text-color: var(--fore-color);
 }
 
+/* hr */
+hr {
+    padding: 0;
+    margin: 0.25rem;
+    border: none;
+    border-top: var(--fore-accent) 1px solid;
+}
+
 /* <-- Views --> */
 #viewManager {
     flex: 1;
     padding: 0;
 }
 
-#viewManager > .is-view {
+.is-view {
     height: 100%;
     position: absolute;
     display: none;
@@ -90,12 +99,26 @@ body * {
     transition: opacity 0.25s ease-in-out;
 }
 
-#viewManager > .is-view.current-view {
+.is-view.current-view {
     display: flex;
+    width: 100%;
 }
 
-/* <-- Views: Search --> */
-.is-view[data-name="Search"] {
+/* <-- Views --> */
+.is-view[data-name="Search"],
+.is-view[data-name="Loading"] {
     justify-content: center;
     align-items: center;
+}
+
+.is-view.current-view[data-name="Results"] {
+    display: block ;
+}
+
+/* Result card */
+.result {
+    display: inline-block;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    background: var(--back-accent);
 }
